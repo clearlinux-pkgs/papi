@@ -1,0 +1,14 @@
+Configure miss: if MIC should be used
+Configure miss: ifort
+Configure miss: mpicc
+Configure miss: dlopen and dlerror symbols in base system
+Configure miss: working gettid
+Configure miss: working MMTIMER
+Configure miss: working CLOCK_REALTIME_HR POSIX 1b timer
+Configure miss: static user preset events
+Configure miss: static compile of tests and utilities
+Configure miss: linking with papi shared library of tests and utilities
+Configure miss: /sys/class/perfctr
+Configure miss: /dev/perfctr
+Configure miss: /sys/kernel/perfmon/version
+Configure miss: /proc/perfmon
