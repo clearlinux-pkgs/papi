@@ -4,7 +4,7 @@
 #
 Name     : papi
 Version  : 5.7.0
-Release  : 1
+Release  : 2
 URL      : http://icl.utk.edu/projects/papi/downloads/papi-5.7.0.tar.gz
 Source0  : http://icl.utk.edu/projects/papi/downloads/papi-5.7.0.tar.gz
 Summary  : Performance Application Programming Interface
@@ -87,7 +87,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1551311341
+export SOURCE_DATE_EPOCH=1551427599
 export LDFLAGS="${LDFLAGS} -fno-lto"
 pushd src
 %configure --disable-static
@@ -95,7 +95,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1551311341
+export SOURCE_DATE_EPOCH=1551427599
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/papi
 cp src/libpfm-3.y/COPYRIGHT %{buildroot}/usr/share/package-licenses/papi/src_libpfm-3.y_COPYRIGHT
@@ -131,12 +131,98 @@ popd
 
 %files dev
 %defattr(-,root,root,-)
+%exclude /usr/include/perfmon/perf_event.h
+%exclude /usr/include/perfmon/pfmlib.h
+%exclude /usr/include/perfmon/pfmlib_perf_event.h
+%exclude /usr/lib64/libpfm.so
+%exclude /usr/share/man/man3/libpfm.3
+%exclude /usr/share/man/man3/libpfm_amd64.3
+%exclude /usr/share/man/man3/libpfm_amd64_fam10h.3
+%exclude /usr/share/man/man3/libpfm_amd64_fam15h.3
+%exclude /usr/share/man/man3/libpfm_amd64_fam16h.3
+%exclude /usr/share/man/man3/libpfm_amd64_fam17h.3
+%exclude /usr/share/man/man3/libpfm_amd64_k7.3
+%exclude /usr/share/man/man3/libpfm_amd64_k8.3
+%exclude /usr/share/man/man3/libpfm_intel_atom.3
+%exclude /usr/share/man/man3/libpfm_intel_bdw.3
+%exclude /usr/share/man/man3/libpfm_intel_bdx_unc_cbo.3
+%exclude /usr/share/man/man3/libpfm_intel_bdx_unc_ha.3
+%exclude /usr/share/man/man3/libpfm_intel_bdx_unc_imc.3
+%exclude /usr/share/man/man3/libpfm_intel_bdx_unc_irp.3
+%exclude /usr/share/man/man3/libpfm_intel_bdx_unc_pcu.3
+%exclude /usr/share/man/man3/libpfm_intel_bdx_unc_qpi.3
+%exclude /usr/share/man/man3/libpfm_intel_bdx_unc_r2pcie.3
+%exclude /usr/share/man/man3/libpfm_intel_bdx_unc_r3qpi.3
+%exclude /usr/share/man/man3/libpfm_intel_bdx_unc_sbo.3
+%exclude /usr/share/man/man3/libpfm_intel_bdx_unc_ubo.3
+%exclude /usr/share/man/man3/libpfm_intel_core.3
+%exclude /usr/share/man/man3/libpfm_intel_glm.3
+%exclude /usr/share/man/man3/libpfm_intel_hsw.3
+%exclude /usr/share/man/man3/libpfm_intel_hswep_unc_cbo.3
+%exclude /usr/share/man/man3/libpfm_intel_hswep_unc_ha.3
+%exclude /usr/share/man/man3/libpfm_intel_hswep_unc_imc.3
+%exclude /usr/share/man/man3/libpfm_intel_hswep_unc_irp.3
+%exclude /usr/share/man/man3/libpfm_intel_hswep_unc_pcu.3
+%exclude /usr/share/man/man3/libpfm_intel_hswep_unc_qpi.3
+%exclude /usr/share/man/man3/libpfm_intel_hswep_unc_r2pcie.3
+%exclude /usr/share/man/man3/libpfm_intel_hswep_unc_r3qpi.3
+%exclude /usr/share/man/man3/libpfm_intel_hswep_unc_sbo.3
+%exclude /usr/share/man/man3/libpfm_intel_hswep_unc_ubo.3
+%exclude /usr/share/man/man3/libpfm_intel_ivb.3
+%exclude /usr/share/man/man3/libpfm_intel_ivb_unc.3
+%exclude /usr/share/man/man3/libpfm_intel_ivbep_unc_cbo.3
+%exclude /usr/share/man/man3/libpfm_intel_ivbep_unc_ha.3
+%exclude /usr/share/man/man3/libpfm_intel_ivbep_unc_imc.3
+%exclude /usr/share/man/man3/libpfm_intel_ivbep_unc_irp.3
+%exclude /usr/share/man/man3/libpfm_intel_ivbep_unc_pcu.3
+%exclude /usr/share/man/man3/libpfm_intel_ivbep_unc_qpi.3
+%exclude /usr/share/man/man3/libpfm_intel_ivbep_unc_r2pcie.3
+%exclude /usr/share/man/man3/libpfm_intel_ivbep_unc_r3qpi.3
+%exclude /usr/share/man/man3/libpfm_intel_ivbep_unc_ubo.3
+%exclude /usr/share/man/man3/libpfm_intel_knc.3
+%exclude /usr/share/man/man3/libpfm_intel_knl.3
+%exclude /usr/share/man/man3/libpfm_intel_knm.3
+%exclude /usr/share/man/man3/libpfm_intel_nhm.3
+%exclude /usr/share/man/man3/libpfm_intel_nhm_unc.3
+%exclude /usr/share/man/man3/libpfm_intel_rapl.3
+%exclude /usr/share/man/man3/libpfm_intel_skl.3
+%exclude /usr/share/man/man3/libpfm_intel_skx_unc_cha.3
+%exclude /usr/share/man/man3/libpfm_intel_skx_unc_imc.3
+%exclude /usr/share/man/man3/libpfm_intel_skx_unc_irp.3
+%exclude /usr/share/man/man3/libpfm_intel_skx_unc_m2m.3
+%exclude /usr/share/man/man3/libpfm_intel_skx_unc_m3upi.3
+%exclude /usr/share/man/man3/libpfm_intel_skx_unc_pcu.3
+%exclude /usr/share/man/man3/libpfm_intel_skx_unc_ubo.3
+%exclude /usr/share/man/man3/libpfm_intel_skx_unc_upi.3
+%exclude /usr/share/man/man3/libpfm_intel_slm.3
+%exclude /usr/share/man/man3/libpfm_intel_snb.3
+%exclude /usr/share/man/man3/libpfm_intel_snb_unc.3
+%exclude /usr/share/man/man3/libpfm_intel_snbep_unc_cbo.3
+%exclude /usr/share/man/man3/libpfm_intel_snbep_unc_ha.3
+%exclude /usr/share/man/man3/libpfm_intel_snbep_unc_imc.3
+%exclude /usr/share/man/man3/libpfm_intel_snbep_unc_pcu.3
+%exclude /usr/share/man/man3/libpfm_intel_snbep_unc_qpi.3
+%exclude /usr/share/man/man3/libpfm_intel_snbep_unc_r2pcie.3
+%exclude /usr/share/man/man3/libpfm_intel_snbep_unc_r3qpi.3
+%exclude /usr/share/man/man3/libpfm_intel_snbep_unc_ubo.3
+%exclude /usr/share/man/man3/libpfm_intel_wsm.3
+%exclude /usr/share/man/man3/libpfm_intel_wsm_unc.3
+%exclude /usr/share/man/man3/libpfm_intel_x86_arch.3
+%exclude /usr/share/man/man3/libpfm_perf_event_raw.3
+%exclude /usr/share/man/man3/pfm_find_event.3
+%exclude /usr/share/man/man3/pfm_get_event_attr_info.3
+%exclude /usr/share/man/man3/pfm_get_event_encoding.3
+%exclude /usr/share/man/man3/pfm_get_event_info.3
+%exclude /usr/share/man/man3/pfm_get_event_next.3
+%exclude /usr/share/man/man3/pfm_get_os_event_encoding.3
+%exclude /usr/share/man/man3/pfm_get_perf_event_encoding.3
+%exclude /usr/share/man/man3/pfm_get_pmu_info.3
+%exclude /usr/share/man/man3/pfm_get_version.3
+%exclude /usr/share/man/man3/pfm_initialize.3
+%exclude /usr/share/man/man3/pfm_strerror.3
+%exclude /usr/share/man/man3/pfm_terminate.3
 /usr/include/*.h
-/usr/include/perfmon/perf_event.h
-/usr/include/perfmon/pfmlib.h
-/usr/include/perfmon/pfmlib_perf_event.h
 /usr/lib64/libpapi.so
-/usr/lib64/libpfm.so
 /usr/lib64/pkgconfig/papi-5.7.0.0.pc
 /usr/lib64/pkgconfig/papi-5.7.0.pc
 /usr/lib64/pkgconfig/papi-5.pc
@@ -319,100 +405,14 @@ popd
 /usr/share/man/man3/PAPI_unlock.3
 /usr/share/man/man3/PAPI_unregister_thread.3
 /usr/share/man/man3/PAPI_write.3
-/usr/share/man/man3/libpfm.3
-/usr/share/man/man3/libpfm_amd64.3
-/usr/share/man/man3/libpfm_amd64_fam10h.3
-/usr/share/man/man3/libpfm_amd64_fam15h.3
-/usr/share/man/man3/libpfm_amd64_fam16h.3
-/usr/share/man/man3/libpfm_amd64_fam17h.3
-/usr/share/man/man3/libpfm_amd64_k7.3
-/usr/share/man/man3/libpfm_amd64_k8.3
-/usr/share/man/man3/libpfm_intel_atom.3
-/usr/share/man/man3/libpfm_intel_bdw.3
-/usr/share/man/man3/libpfm_intel_bdx_unc_cbo.3
-/usr/share/man/man3/libpfm_intel_bdx_unc_ha.3
-/usr/share/man/man3/libpfm_intel_bdx_unc_imc.3
-/usr/share/man/man3/libpfm_intel_bdx_unc_irp.3
-/usr/share/man/man3/libpfm_intel_bdx_unc_pcu.3
-/usr/share/man/man3/libpfm_intel_bdx_unc_qpi.3
-/usr/share/man/man3/libpfm_intel_bdx_unc_r2pcie.3
-/usr/share/man/man3/libpfm_intel_bdx_unc_r3qpi.3
-/usr/share/man/man3/libpfm_intel_bdx_unc_sbo.3
-/usr/share/man/man3/libpfm_intel_bdx_unc_ubo.3
-/usr/share/man/man3/libpfm_intel_core.3
-/usr/share/man/man3/libpfm_intel_glm.3
-/usr/share/man/man3/libpfm_intel_hsw.3
-/usr/share/man/man3/libpfm_intel_hswep_unc_cbo.3
-/usr/share/man/man3/libpfm_intel_hswep_unc_ha.3
-/usr/share/man/man3/libpfm_intel_hswep_unc_imc.3
-/usr/share/man/man3/libpfm_intel_hswep_unc_irp.3
-/usr/share/man/man3/libpfm_intel_hswep_unc_pcu.3
-/usr/share/man/man3/libpfm_intel_hswep_unc_qpi.3
-/usr/share/man/man3/libpfm_intel_hswep_unc_r2pcie.3
-/usr/share/man/man3/libpfm_intel_hswep_unc_r3qpi.3
-/usr/share/man/man3/libpfm_intel_hswep_unc_sbo.3
-/usr/share/man/man3/libpfm_intel_hswep_unc_ubo.3
-/usr/share/man/man3/libpfm_intel_ivb.3
-/usr/share/man/man3/libpfm_intel_ivb_unc.3
-/usr/share/man/man3/libpfm_intel_ivbep_unc_cbo.3
-/usr/share/man/man3/libpfm_intel_ivbep_unc_ha.3
-/usr/share/man/man3/libpfm_intel_ivbep_unc_imc.3
-/usr/share/man/man3/libpfm_intel_ivbep_unc_irp.3
-/usr/share/man/man3/libpfm_intel_ivbep_unc_pcu.3
-/usr/share/man/man3/libpfm_intel_ivbep_unc_qpi.3
-/usr/share/man/man3/libpfm_intel_ivbep_unc_r2pcie.3
-/usr/share/man/man3/libpfm_intel_ivbep_unc_r3qpi.3
-/usr/share/man/man3/libpfm_intel_ivbep_unc_ubo.3
-/usr/share/man/man3/libpfm_intel_knc.3
-/usr/share/man/man3/libpfm_intel_knl.3
-/usr/share/man/man3/libpfm_intel_knm.3
-/usr/share/man/man3/libpfm_intel_nhm.3
-/usr/share/man/man3/libpfm_intel_nhm_unc.3
-/usr/share/man/man3/libpfm_intel_rapl.3
-/usr/share/man/man3/libpfm_intel_skl.3
-/usr/share/man/man3/libpfm_intel_skx_unc_cha.3
-/usr/share/man/man3/libpfm_intel_skx_unc_imc.3
-/usr/share/man/man3/libpfm_intel_skx_unc_irp.3
-/usr/share/man/man3/libpfm_intel_skx_unc_m2m.3
-/usr/share/man/man3/libpfm_intel_skx_unc_m3upi.3
-/usr/share/man/man3/libpfm_intel_skx_unc_pcu.3
-/usr/share/man/man3/libpfm_intel_skx_unc_ubo.3
-/usr/share/man/man3/libpfm_intel_skx_unc_upi.3
-/usr/share/man/man3/libpfm_intel_slm.3
-/usr/share/man/man3/libpfm_intel_snb.3
-/usr/share/man/man3/libpfm_intel_snb_unc.3
-/usr/share/man/man3/libpfm_intel_snbep_unc_cbo.3
-/usr/share/man/man3/libpfm_intel_snbep_unc_ha.3
-/usr/share/man/man3/libpfm_intel_snbep_unc_imc.3
-/usr/share/man/man3/libpfm_intel_snbep_unc_pcu.3
-/usr/share/man/man3/libpfm_intel_snbep_unc_qpi.3
-/usr/share/man/man3/libpfm_intel_snbep_unc_r2pcie.3
-/usr/share/man/man3/libpfm_intel_snbep_unc_r3qpi.3
-/usr/share/man/man3/libpfm_intel_snbep_unc_ubo.3
-/usr/share/man/man3/libpfm_intel_wsm.3
-/usr/share/man/man3/libpfm_intel_wsm_unc.3
-/usr/share/man/man3/libpfm_intel_x86_arch.3
-/usr/share/man/man3/libpfm_perf_event_raw.3
-/usr/share/man/man3/pfm_find_event.3
-/usr/share/man/man3/pfm_get_event_attr_info.3
-/usr/share/man/man3/pfm_get_event_encoding.3
-/usr/share/man/man3/pfm_get_event_info.3
-/usr/share/man/man3/pfm_get_event_next.3
-/usr/share/man/man3/pfm_get_os_event_encoding.3
-/usr/share/man/man3/pfm_get_perf_event_encoding.3
-/usr/share/man/man3/pfm_get_pmu_info.3
-/usr/share/man/man3/pfm_get_version.3
-/usr/share/man/man3/pfm_initialize.3
-/usr/share/man/man3/pfm_strerror.3
-/usr/share/man/man3/pfm_terminate.3
 
 %files lib
 %defattr(-,root,root,-)
+%exclude /usr/lib64/libpfm.so.4
+%exclude /usr/lib64/libpfm.so.4.10.1
 /usr/lib64/libpapi.so.5
 /usr/lib64/libpapi.so.5.7.0
 /usr/lib64/libpapi.so.5.7.0.0
-/usr/lib64/libpfm.so.4
-/usr/lib64/libpfm.so.4.10.1
 
 %files license
 %defattr(0644,root,root,0755)

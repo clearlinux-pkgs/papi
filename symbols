@@ -364,16 +364,3 @@ libpapi.so.5:papif_unregster_thread__
 libpapi.so.5:papif_write
 libpapi.so.5:papif_write_
 libpapi.so.5:papif_write__
-libpfm.so.4:pfm_find_event
-libpfm.so.4:pfm_get_event_attr_info
-libpfm.so.4:pfm_get_event_encoding
-libpfm.so.4:pfm_get_event_info
-libpfm.so.4:pfm_get_event_next
-libpfm.so.4:pfm_get_os_event_encoding
-libpfm.so.4:pfm_get_perf_event_encoding
-libpfm.so.4:pfm_get_pmu_info
-libpfm.so.4:pfm_get_version
-libpfm.so.4:pfm_initialize
-libpfm.so.4:pfm_pmu_validate
-libpfm.so.4:pfm_strerror
-libpfm.so.4:pfm_terminate
