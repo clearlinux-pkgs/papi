@@ -1,0 +1,44 @@
+--- papi-6.0.0/src/Makefile.inc~	2020-03-04 15:56:57.000000000 +0000
++++ papi-6.0.0/src/Makefile.inc	2020-03-19 15:15:47.837707891 +0000
+@@ -25,7 +25,7 @@
+ LIBPC = $(LIBDIR)/pkgconfig
+ 
+ all: $(SHOW_CONF) $(LIBS) utils tests 
+-.PHONY : all test fulltest tests testlib utils ctests ftests comp_tests validation_tests null
++.PHONY : all test fulltest tests testlib utils ctests ftests comp_tests  null
+ 
+ include $(COMPONENT_RULES)
+ 
+--- papi-6.0.0/src/validation_tests/Makefile.recipies~	2020-03-04 15:57:02.000000000 +0000
++++ papi-6.0.0/src/validation_tests/Makefile.recipies	2020-03-19 15:22:00.705702700 +0000
+@@ -1,5 +1,4 @@
+ ALL = fp_validation_hl \
+-	cycles_validation flops_validation \
+ 	papi_br_cn papi_br_ins papi_br_msp \
+ 	papi_br_ntk papi_br_prc papi_br_tkn papi_br_ucn \
+ 	papi_dp_ops papi_fp_ops papi_sp_ops papi_hw_int \
+--- papi-6.0.0/src/ctests/Makefile.recipies~	2020-03-04 15:56:58.000000000 +0000
++++ papi-6.0.0/src/ctests/Makefile.recipies	2020-03-19 15:29:56.773696072 +0000
+@@ -14,12 +14,11 @@
+ SHARED  = shlib
+ SERIAL  = serial_hl serial_hl_ll_comb\
+ 	all_events all_native_events branches calibrate case1 case2 \
+-	cmpinfo code2name derived describe destroy disable_component \
+ 	dmem_info eventname exeinfo failed_events first \
+ 	get_event_component inherit \
+ 	hwinfo johnmay2 low-level memory \
+ 	realtime remove_events reset second tenth version virttime \
+-	zero zero_flip zero_named
++	zero_flip zero_named
+ FORKEXEC  = fork fork2 exec exec2 forkexec forkexec2 forkexec3 forkexec4 \
+ 	fork_overflow exec_overflow child_overflow system_child_overflow \
+ 	system_overflow burn zero_fork
+@@ -30,7 +29,7 @@
+ PROFILE  = profile profile_force_software sprofile profile_twoevents \
+ 	byte_profile
+ ATTACH	= multiattach multiattach2 zero_attach attach3 attach2 attach_target \
+-	attach_cpu attach_validate attach_cpu_validate attach_cpu_sys_validate
++	attach_cpu attach_cpu_validate attach_cpu_sys_validate
+ P4_TEST	= p4_lst_ins
+ EAR	= earprofile
+ RANGE	= data_range

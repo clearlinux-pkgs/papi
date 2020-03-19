@@ -1,8 +1,8 @@
 Configure miss: if MIC should be used
 Configure miss: ifort
 Configure miss: mpicc
+Configure miss: timer_create and timer_*ettime symbols in base system
 Configure miss: dlopen and dlerror symbols in base system
-Configure miss: working gettid
 Configure miss: working MMTIMER
 Configure miss: working CLOCK_REALTIME_HR POSIX 1b timer
 Configure miss: static user preset events
