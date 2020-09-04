@@ -4,7 +4,7 @@
 #
 Name     : papi
 Version  : 6.0.0
-Release  : 3
+Release  : 4
 URL      : http://icl.utk.edu/projects/papi/downloads/papi-6.0.0.tar.gz
 Source0  : http://icl.utk.edu/projects/papi/downloads/papi-6.0.0.tar.gz
 Summary  : Performance Application Programming Interface
@@ -50,7 +50,6 @@ Requires: papi-bin = %{version}-%{release}
 Requires: papi-data = %{version}-%{release}
 Provides: papi-devel = %{version}-%{release}
 Requires: papi = %{version}-%{release}
-Requires: papi = %{version}-%{release}
 
 %description dev
 dev components for the papi package.
@@ -92,15 +91,14 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1584633131
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1599180649
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 pushd src
 %configure --disable-static --with-shared-lib=yes --with-shlib
@@ -108,7 +106,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1584633131
+export SOURCE_DATE_EPOCH=1599180649
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/papi
 cp %{_builddir}/papi-6.0.0/LICENSE.txt %{buildroot}/usr/share/package-licenses/papi/59b0fef4a53813ce8956129901045c9be90d53e7
@@ -121,98 +119,99 @@ pushd src
 %make_install
 popd
 ## Remove excluded files
-rm -f %{buildroot}/usr/share/man/man3/libpfm_amd64_fam16h.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_amd64_k8.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_bdx_unc_r3qpi.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_ivbep_unc_imc.3
-rm -f %{buildroot}/usr/share/man/man3/pfm_find_event.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_skx_unc_cha.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_skx_unc_m3upi.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_snb_unc.3
+rm -f %{buildroot}/usr/include/perfmon/perf_event.h
+rm -f %{buildroot}/usr/include/perfmon/pfmlib.h
 rm -f %{buildroot}/usr/include/perfmon/pfmlib_perf_event.h
-rm -f %{buildroot}/usr/share/man/man3/pfm_terminate.3
-rm -f %{buildroot}/usr/share/man/man3/pfm_get_perf_event_encoding.3
-rm -f %{buildroot}/usr/share/man/man3/pfm_get_os_event_encoding.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_wsm_unc.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_bdx_unc_irp.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_perf_event_raw.3
-rm -f %{buildroot}/usr/share/man/man3/pfm_initialize.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_bdx_unc_pcu.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_core.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_snbep_unc_imc.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_snbep_unc_r2pcie.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_nhm.3
+rm -f %{buildroot}/usr/lib64/libpfm.so
 rm -f %{buildroot}/usr/lib64/libpfm.so.4
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_ivbep_unc_ha.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_amd64_fam10h.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_amd64_k7.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_ivb_unc.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_snbep_unc_qpi.3
 rm -f %{buildroot}/usr/lib64/libpfm.so.4.10.1
 rm -f %{buildroot}/usr/share/man/man3/libpfm.3
-rm -f %{buildroot}/usr/share/man/man3/pfm_get_event_info.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_bdx_unc_imc.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_hswep_unc_ha.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_amd64_fam17h.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_slm.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_x86_arch.3
-rm -f %{buildroot}/usr/lib64/libpfm.so
-rm -f %{buildroot}/usr/include/perfmon/perf_event.h
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_hswep_unc_irp.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_hswep_unc_sbo.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_hswep_unc_r3qpi.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_ivbep_unc_r3qpi.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_snbep_unc_cbo.3
-rm -f %{buildroot}/usr/share/man/man3/pfm_get_event_attr_info.3
-rm -f %{buildroot}/usr/include/perfmon/pfmlib.h
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_snb.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_bdx_unc_qpi.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_bdx_unc_ubo.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_hswep_unc_imc.3
-rm -f %{buildroot}/usr/share/man/man3/pfm_get_event_encoding.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_hswep_unc_pcu.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_ivbep_unc_qpi.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_skx_unc_pcu.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_atom.3
 rm -f %{buildroot}/usr/share/man/man3/libpfm_amd64.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_hswep_unc_r2pcie.3
-rm -f %{buildroot}/usr/share/man/man3/pfm_strerror.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_rapl.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_bdx_unc_r2pcie.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_amd64_fam10h.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_amd64_fam15h.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_amd64_fam16h.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_amd64_fam17h.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_amd64_fam17h_zen2.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_amd64_k7.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_amd64_k8.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_atom.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_bdw.3
 rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_bdx_unc_cbo.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_bdx_unc_ha.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_bdx_unc_imc.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_bdx_unc_irp.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_bdx_unc_pcu.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_bdx_unc_qpi.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_bdx_unc_r2pcie.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_bdx_unc_r3qpi.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_bdx_unc_sbo.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_bdx_unc_ubo.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_core.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_glm.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_hsw.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_hswep_unc_cbo.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_hswep_unc_ha.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_hswep_unc_imc.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_hswep_unc_irp.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_hswep_unc_pcu.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_hswep_unc_qpi.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_hswep_unc_r2pcie.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_hswep_unc_r3qpi.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_hswep_unc_sbo.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_hswep_unc_ubo.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_ivb.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_ivb_unc.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_ivbep_unc_cbo.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_ivbep_unc_ha.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_ivbep_unc_imc.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_ivbep_unc_irp.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_ivbep_unc_pcu.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_ivbep_unc_qpi.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_ivbep_unc_r2pcie.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_ivbep_unc_r3qpi.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_ivbep_unc_ubo.3
 rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_knc.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_knl.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_knm.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_nhm.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_nhm_unc.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_rapl.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_skl.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_skx_unc_cha.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_skx_unc_imc.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_skx_unc_irp.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_skx_unc_m2m.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_skx_unc_m3upi.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_skx_unc_pcu.3
 rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_skx_unc_ubo.3
 rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_skx_unc_upi.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_skx_unc_m2m.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_slm.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_snb.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_snb_unc.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_snbep_unc_cbo.3
 rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_snbep_unc_ha.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_ivbep_unc_pcu.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_snbep_unc_r3qpi.3
-rm -f %{buildroot}/usr/share/man/man3/pfm_get_version.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_knl.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_ivbep_unc_ubo.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_bdx_unc_sbo.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_ivbep_unc_irp.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_skx_unc_irp.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_skl.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_ivbep_unc_cbo.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_bdw.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_hswep_unc_qpi.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_snbep_unc_ubo.3
-rm -f %{buildroot}/usr/share/man/man3/pfm_get_event_next.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_glm.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_bdx_unc_ha.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_snbep_unc_imc.3
 rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_snbep_unc_pcu.3
-rm -f %{buildroot}/usr/share/man/man3/pfm_get_pmu_info.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_hsw.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_knm.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_hswep_unc_ubo.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_nhm_unc.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_amd64_fam15h.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_ivb.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_hswep_unc_cbo.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_snbep_unc_qpi.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_snbep_unc_r2pcie.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_snbep_unc_r3qpi.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_snbep_unc_ubo.3
 rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_wsm.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_ivbep_unc_r2pcie.3
-rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_skx_unc_imc.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_wsm_unc.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_x86_arch.3
+rm -f %{buildroot}/usr/share/man/man3/libpfm_perf_event_raw.3
+rm -f %{buildroot}/usr/share/man/man3/pfm_find_event.3
+rm -f %{buildroot}/usr/share/man/man3/pfm_get_event_attr_info.3
+rm -f %{buildroot}/usr/share/man/man3/pfm_get_event_encoding.3
+rm -f %{buildroot}/usr/share/man/man3/pfm_get_event_info.3
+rm -f %{buildroot}/usr/share/man/man3/pfm_get_event_next.3
+rm -f %{buildroot}/usr/share/man/man3/pfm_get_os_event_encoding.3
+rm -f %{buildroot}/usr/share/man/man3/pfm_get_perf_event_encoding.3
+rm -f %{buildroot}/usr/share/man/man3/pfm_get_pmu_info.3
+rm -f %{buildroot}/usr/share/man/man3/pfm_get_version.3
+rm -f %{buildroot}/usr/share/man/man3/pfm_initialize.3
+rm -f %{buildroot}/usr/share/man/man3/pfm_strerror.3
+rm -f %{buildroot}/usr/share/man/man3/pfm_terminate.3
 
 %files
 %defattr(-,root,root,-)
@@ -428,7 +427,6 @@ rm -f %{buildroot}/usr/share/man/man3/libpfm_intel_skx_unc_imc.3
 /usr/share/man/man3/PAPIf_hl_region_begin.3
 /usr/share/man/man3/PAPIf_hl_region_end.3
 /usr/share/man/man3/PAPIf_hl_stop.3
-/usr/share/man/man3/libpfm_amd64_fam17h_zen2.3
 
 %files lib
 %defattr(-,root,root,-)
